@@ -1,4 +1,4 @@
-// import "../ganttSync/css/tailwind.css";
+import "../ganttSync/css/tailwind.css";
 
 import {
   GanttComponent,
