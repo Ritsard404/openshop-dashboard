@@ -1,67 +1,69 @@
 import "../ganttSync/css/tailwind.css";
 
 import {
-  GanttComponent,
-  Inject,
-  Selection,
-  Toolbar,
-  Edit,
-  EditSettingsModel,
-  ToolbarItem,
-  Filter,
-  TaskFieldsModel,
-} from "@syncfusion/ej2-react-gantt";
-import {
-  DataManager,
-  WebApiAdaptor,
-} from "@syncfusion/ej2/data";
-const Gantt = () => {
-  const toolbarOptions: ToolbarItem[] = [
-    "Add",
-    "Edit",
-    "Delete",
-    "Cancel",
-    "Update",
-    "PrevTimeSpan",
-    "NextTimeSpan",
-    "ExpandAll",
-    "CollapseAll",
-    "Search",
-    "Indent",
-    "Outdent",
-    "ZoomIn",
-    "ZoomOut",
-    "ZoomToFit",
-  ];
+    GanttComponent,
+    Inject,
+    Selection,
+    Toolbar,
+    Edit,
+    EditSettingsModel,
+    ToolbarItem,
+    Filter,
+    TaskFieldsModel,
+  } from "@syncfusion/ej2-react-gantt";
+  import {
+    DataManager,
+    WebApiAdaptor,
+  } from "@syncfusion/ej2/data";
 
-  const editOptions: EditSettingsModel = {
-    allowAdding: true,
-    allowEditing: true,
-    allowDeleting: true,
-    allowTaskbarEditing: true,
-    showDeleteConfirmDialog: true,
-  };
+const Gantt2 = () => {
+
+    const toolbarOptions: ToolbarItem[] = [
+        "Add",
+        "Edit",
+        "Delete",
+        "Cancel",
+        "Update",
+        "PrevTimeSpan",
+        "NextTimeSpan",
+        "ExpandAll",
+        "CollapseAll",
+        "Search",
+        "Indent",
+        "Outdent",
+        "ZoomIn",
+        "ZoomOut",
+        "ZoomToFit",
+      ];
+    
+      const editOptions: EditSettingsModel = {
+        allowAdding: true,
+        allowEditing: true,
+        allowDeleting: true,
+        allowTaskbarEditing: true,
+        showDeleteConfirmDialog: true,
+      };
+
+      const taskFieldData: TaskFieldsModel = {
+        id: "TaskId",
+        name: "TaskName",
+        startDate: "PlannedStartDate",
+        endDate: "PlannedEndDate",
+        duration: "Duration",
+        progress: "Progress",
+        baselineStartDate: "ActualStartDate",
+        baselineEndDate: "ActualEndDate",
+        dependency: "Predecessor",
+        parentID: "ParentId",
+      };
 
   // Initialize DataManager
   const dataManager: DataManager = new DataManager({
-    url: "https://localhost:7233/api/Gantt",
+    url: "https://localhost:7233/api/Gantt2",
     adaptor: new WebApiAdaptor(),
     crossDomain: true,
   });
 
-  const taskFieldData: TaskFieldsModel = {
-    id: "TaskId",
-    name: "TaskName",
-    startDate: "PlannedStartDate",
-    endDate: "PlannedEndDate",
-    duration: "Week",
-    progress: "Progress",
-    baselineStartDate: "ActualStartDate",
-    baselineEndDate: "ActualEndDate",
-    child: "SubTasks",
-    dependency: "Predecessor",
-  };
-  
   return (
     <div className="p-5">
       <GanttComponent
@@ -107,7 +109,7 @@ const Gantt = () => {
         </ColumnsDirective> */}
       </GanttComponent>
     </div>
-  );
-};
+  )
+}
 
-export default Gantt;
+export default Gantt2

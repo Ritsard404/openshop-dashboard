@@ -6,6 +6,7 @@ import GanttSample from "./page/gantt/GanttSample";
 import GanttSampleSync from "./page/ganttSync/GanttSampleSync";
 import DisplayData from "./page/ganttSync/DisplayData";
 import Gantt from "./page/ganttSync/Gantt";
+import Gantt2 from "./page/ganttSync/Gantt2";
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
           <Route path="products" element={<Products />}></Route>
         </Route>
         <Route path="login" element={<div>this is login page</div>}></Route> */}
-        <Route path="/" element={<Gantt />} />
+        {/* <Route path="/" element={<GanttSampleSync />} /> */}
+        {/* <Route path="/" element={<Gantt />} /> */}
+        <Route path="/" element={<Gantt2 />} />
         {/* <Route path="/" element={<DisplayData />} /> */}
       </Routes>
     </Router>

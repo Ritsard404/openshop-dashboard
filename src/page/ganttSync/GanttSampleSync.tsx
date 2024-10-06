@@ -27,7 +27,6 @@ import axios from "axios";
 import { filter } from "@syncfusion/ej2/filemanager";
 
 const GanttSampleSync = () => {
-
   const toolbarOptions: ToolbarItem[] = [
     "Add",
     "Edit",
@@ -52,6 +51,7 @@ const GanttSampleSync = () => {
     allowDeleting: true,
     allowTaskbarEditing: true,
     showDeleteConfirmDialog: true,
+    mode: "Auto",
   };
 
   // Helper function to format date as 'MM dd, yyyy'
@@ -91,12 +91,12 @@ const GanttSampleSync = () => {
   });
 
   const sampleTaskFields: any = {
-    id: 'TaskId',
-    name: 'TaskName',
-    startDate: 'StartDate',
-    duration: 'Duration',
-    dependency: 'Predecessor',
-    child: 'SubTasks'
+    id: "TaskId",
+    name: "TaskName",
+    startDate: "StartDate",
+    duration: "Duration",
+    dependency: "Predecessor",
+    child: "SubTasks",
   };
 
   // const taskFields: TaskFieldsModel = {
@@ -122,13 +122,14 @@ const GanttSampleSync = () => {
     dependency: "Predecessor",
   };
 
-
   return (
     <div className="p-5">
       <GanttComponent
         // loadingIndicator={{ indicatorType: "Shimmer" }}
-        dataSource={dataManager}
-        taskFields={taskFieldData}
+        dataSource={GanttSyncData}
+        taskFields={taskFields}
+        // dataSource={dataManager}
+        // taskFields={taskFieldData}
         height="450px"
         // timelineSettings={{
         //   timelineViewMode: "Week",
