@@ -90,48 +90,7 @@ const Gantt2 = () => {
         allowReordering={true}
         allowParentDependency={true}
       >
-<<<<<<< HEAD
         <Inject services={[Toolbar, Selection, Filter, Edit]} />
-=======
-        <HolidaysDirective>
-          <HolidayDirective
-            label="Local Holiday"
-            cssClass="e-custom-holiday"
-          ></HolidayDirective>
-        </HolidaysDirective>
-        <Inject
-          services={[
-            Toolbar,
-            Selection,
-            Filter,
-            Edit,
-            RowDD,
-            Reorder,
-            DayMarkers,
-            Sort,
-          ]}
-        />
-        {/* <ColumnsDirective>
-          <ColumnDirective field="TaskID" headerText="ID" />
-          <ColumnDirective field="TaskName" headerText="Name" />
-          <ColumnDirective
-            field="PlannedStartDate"
-            format="MMMM d, yyyy"
-            headerText="Start Date"
-          />
-          <ColumnDirective
-            field="PlannedEndDate"
-            format="MMMM d, yyyy"
-            headerText="End Date"
-            allowEditing
-          />
-          <ColumnDirective
-            field="Week"
-            headerText="Duration (Days)"
-            allowEditing={false}
-          />
-        </ColumnsDirective> */}
->>>>>>> 4fb6df3e4689db7443ff39d2e8d80d94a348628a
       </GanttComponent>
     </div>
   );
