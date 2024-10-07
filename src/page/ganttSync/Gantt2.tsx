@@ -87,26 +87,6 @@ const Gantt2 = () => {
         editSettings={editOptions}
       >
         <Inject services={[Toolbar, Selection, Filter, Edit]} />
-        {/* <ColumnsDirective>
-          <ColumnDirective field="TaskID" headerText="ID" />
-          <ColumnDirective field="TaskName" headerText="Name" />
-          <ColumnDirective
-            field="PlannedStartDate"
-            format="MMMM d, yyyy"
-            headerText="Start Date"
-          />
-          <ColumnDirective
-            field="PlannedEndDate"
-            format="MMMM d, yyyy"
-            headerText="End Date"
-            allowEditing
-          />
-          <ColumnDirective
-            field="Week"
-            headerText="Duration (Days)"
-            allowEditing={false}
-          />
-        </ColumnsDirective> */}
       </GanttComponent>
     </div>
   )
