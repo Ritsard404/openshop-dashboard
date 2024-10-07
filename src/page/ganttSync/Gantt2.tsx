@@ -1,61 +1,63 @@
 import "../ganttSync/css/tailwind.css";
 
 import {
-    GanttComponent,
-    Inject,
-    Selection,
-    Toolbar,
-    Edit,
-    EditSettingsModel,
-    ToolbarItem,
-    Filter,
-    TaskFieldsModel,
-  } from "@syncfusion/ej2-react-gantt";
-  import {
-    DataManager,
-    WebApiAdaptor,
-  } from "@syncfusion/ej2/data";
+  GanttComponent,
+  Inject,
+  Selection,
+  Toolbar,
+  Edit,
+  EditSettingsModel,
+  ToolbarItem,
+  Filter,
+  TaskFieldsModel,
+  RowDD,
+  Reorder,
+  DayMarkers,
+  HolidaysDirective,
+  HolidayDirective,
+  Sort,
+} from "@syncfusion/ej2-react-gantt";
+import { DataManager, WebApiAdaptor } from "@syncfusion/ej2/data";
 
 const Gantt2 = () => {
+  const toolbarOptions: ToolbarItem[] = [
+    "Add",
+    "Edit",
+    "Delete",
+    "Cancel",
+    "Update",
+    "PrevTimeSpan",
+    "NextTimeSpan",
+    "ExpandAll",
+    "CollapseAll",
+    "Search",
+    "Indent",
+    "Outdent",
+    "ZoomIn",
+    "ZoomOut",
+    "ZoomToFit",
+  ];
 
-    const toolbarOptions: ToolbarItem[] = [
-        "Add",
-        "Edit",
-        "Delete",
-        "Cancel",
-        "Update",
-        "PrevTimeSpan",
-        "NextTimeSpan",
-        "ExpandAll",
-        "CollapseAll",
-        "Search",
-        "Indent",
-        "Outdent",
-        "ZoomIn",
-        "ZoomOut",
-        "ZoomToFit",
-      ];
-    
-      const editOptions: EditSettingsModel = {
-        allowAdding: true,
-        allowEditing: true,
-        allowDeleting: true,
-        allowTaskbarEditing: true,
-        showDeleteConfirmDialog: true,
-      };
+  const editOptions: EditSettingsModel = {
+    allowAdding: true,
+    allowEditing: true,
+    allowDeleting: true,
+    allowTaskbarEditing: true,
+    showDeleteConfirmDialog: true,
+  };
 
-      const taskFieldData: TaskFieldsModel = {
-        id: "TaskId",
-        name: "TaskName",
-        startDate: "PlannedStartDate",
-        endDate: "PlannedEndDate",
-        duration: "Duration",
-        progress: "Progress",
-        baselineStartDate: "ActualStartDate",
-        baselineEndDate: "ActualEndDate",
-        dependency: "Predecessor",
-        parentID: "ParentId",
-      };
+  const taskFieldData: TaskFieldsModel = {
+    id: "TaskId",
+    name: "TaskName",
+    startDate: "PlannedStartDate",
+    endDate: "PlannedEndDate",
+    duration: "Duration",
+    progress: "Progress",
+    baselineStartDate: "ActualStartDate",
+    baselineEndDate: "ActualEndDate",
+    dependency: "Predecessor",
+    parentID: "ParentId",
+  };
 
   // Initialize DataManager
   const dataManager: DataManager = new DataManager({
@@ -83,13 +85,56 @@ const Gantt2 = () => {
         baselineColor="orange"
         renderBaseline={true}
         showColumnMenu={true}
-
         editSettings={editOptions}
+        allowRowDragAndDrop={true}
+        allowReordering={true}
+        allowParentDependency={true}
       >
+<<<<<<< HEAD
         <Inject services={[Toolbar, Selection, Filter, Edit]} />
+=======
+        <HolidaysDirective>
+          <HolidayDirective
+            label="Local Holiday"
+            cssClass="e-custom-holiday"
+          ></HolidayDirective>
+        </HolidaysDirective>
+        <Inject
+          services={[
+            Toolbar,
+            Selection,
+            Filter,
+            Edit,
+            RowDD,
+            Reorder,
+            DayMarkers,
+            Sort,
+          ]}
+        />
+        {/* <ColumnsDirective>
+          <ColumnDirective field="TaskID" headerText="ID" />
+          <ColumnDirective field="TaskName" headerText="Name" />
+          <ColumnDirective
+            field="PlannedStartDate"
+            format="MMMM d, yyyy"
+            headerText="Start Date"
+          />
+          <ColumnDirective
+            field="PlannedEndDate"
+            format="MMMM d, yyyy"
+            headerText="End Date"
+            allowEditing
+          />
+          <ColumnDirective
+            field="Week"
+            headerText="Duration (Days)"
+            allowEditing={false}
+          />
+        </ColumnsDirective> */}
+>>>>>>> 4fb6df3e4689db7443ff39d2e8d80d94a348628a
       </GanttComponent>
     </div>
-  )
-}
+  );
+};
 
-export default Gantt2
+export default Gantt2;
