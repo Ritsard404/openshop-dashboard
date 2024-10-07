@@ -1,11 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Layout from "./components/shared/Layout";
-import Dashoard from "./components/Dashoard";
-import Products from "./components/Products";
-import GanttSample from "./page/gantt/GanttSample";
-import GanttSampleSync from "./page/ganttSync/GanttSampleSync";
-import DisplayData from "./page/ganttSync/DisplayData";
-import Gantt from "./page/ganttSync/Gantt";
 import Gantt2 from "./page/ganttSync/Gantt2";
 
 function App() {
