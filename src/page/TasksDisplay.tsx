@@ -1,56 +1,41 @@
-import React from "react";
-import { FacilitatorTasksDTO, tasks } from "./TaskList";
+import React, { useState } from "react";
+import { FacilitatorTasksDTO } from "./TaskList";
 
-interface TaskItemProps {
-  task: FacilitatorTasksDTO;
-}
+const TaskCard: React.FC<{ task: FacilitatorTasksDTO }> = ({ task }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-// Recursive component to display tasks and their subtasks
-const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   return (
-    <div className="task bg-white shadow-md rounded-lg p-4 mb-4" key={task.id}>
-      <h3 className="text-xl font-semibold text-gray-800">
-        {task.taskName || "Unnamed Task"}
-      </h3>
-      <p className="text-gray-600">
-        <strong>Progress:</strong> {task.progress ?? 0}%
-      </p>
-      <p className="text-gray-600">
-        <strong>Planned Start:</strong>{" "}
-        {task.plannedStartDate?.toLocaleDateString()}
-      </p>
-      <p className="text-gray-600">
-        <strong>Planned End:</strong>{" "}
+    <div className="border border-gray-200 rounded-lg p-4 shadow-md mb-4">
+      <div className="flex justify-between items-center">
+        <h3 className="font-semibold text-lg">
+          {task.taskName || "Unnamed Task"}
+        </h3>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-blue-500 hover:underline"
+        >
+          {isOpen ? "Hide Subtasks" : "Show Subtasks"}
+        </button>
+      </div>
+      <p className="text-sm text-gray-500">
+        Planned: {task.plannedStartDate?.toLocaleDateString()} -{" "}
         {task.plannedEndDate?.toLocaleDateString()}
       </p>
-      <p className="text-gray-600">
-        <strong>Actual Start:</strong>{" "}
-        {task.actualStartDate?.toLocaleDateString()}
-      </p>
-      <p className="text-gray-600">
-        <strong>Actual End:</strong> {task.actualEndDate?.toLocaleDateString()}
+      <p className="text-sm text-gray-500">
+        <strong>Progress:</strong> {task.progress ?? 0}%
       </p>
       {task.startProofImage && (
         <img
-          className="w-1/2 h-auto mt-2 rounded-md"
           src={task.startProofImage}
           alt="Start Proof"
-        />
-      )}
-      {task.endProofImage && (
-        <img
-          className="w-1/2 h-auto mt-2 rounded-md"
-          src={task.endProofImage}
-          alt="End Proof"
+          className="mt-2 w-32 h-auto rounded-md"
         />
       )}
 
-      {/* Render subtasks */}
-      {task.subtasks && task.subtasks.length > 0 && (
-        <div className="subtask-list mt-4">
-          <h4 className="text-lg font-semibold text-gray-700">Subtasks:</h4>
+      {isOpen && task.subtasks && task.subtasks.length > 0 && (
+        <div className="pl-4 mt-4">
           {task.subtasks.map((subtask) => (
-            <TaskItem key={subtask.id} task={subtask} />
+            <TaskCard key={subtask.id} task={subtask} />
           ))}
         </div>
       )}
@@ -58,11 +43,13 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   );
 };
 
-const TasksDisplay: React.FC = () => {
+const TasksDisplay: React.FC<{ tasks: FacilitatorTasksDTO[] }> = ({
+  tasks,
+}) => {
   return (
-    <div className="task-list p-4">
+    <div className="space-y-4">
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} />
+        <TaskCard key={task.id} task={task} />
       ))}
     </div>
   );
